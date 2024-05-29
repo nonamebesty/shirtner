@@ -10,3 +10,5 @@ aiofiles
 validators
 python-dotenv
 uvloop
+Flask>=2.0
+#werkzeug>=2.0
