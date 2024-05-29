@@ -1,15 +1,9 @@
-FROM python:3.10.6-slim-buster
+FROM python:3.9
+WORKDIR /app1
 
-# Install required system packages
-RUN apt-get update && \
-    apt-get install -y ffmpeg libsm6 libxext6
-RUN apt-get install build-essential python3-dev -y
-RUN apt install git -y
-# Set the working directory
-WORKDIR /app
+COPY requirements.txt /app1/
+RUN pip3 install -r requirements.txt
 
-# Copy the requirements file to the working directory
-COPY start.sh /start.sh
+COPY . /app1
 
-# Set the command to run the Python script
-CMD ["/bin/bash", "/start.sh"]
+CMD flask run -h 0.0.0.0 -p 10000 & python3 main.py
