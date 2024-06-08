@@ -86,10 +86,9 @@ async def main_convertor_handler(
     # converting reply_markup urls
     reply_markup = await create_inline_keyboard_markup(message, method_func, user=user)
 
-    # Adding header and footer, with main content in a blockquote
+    # Adding header and footer
     if header_text:
-        shortenedText = f"<b>{header_text}</b>\n"
-    shortenedText += f"<blockquote>{shortenedText}</blockquote>"
+        shortenedText = f"<b>{header_text}</b>\n{shortenedText}"
     if footer_text:
         shortenedText += f"\n<b>{footer_text}</b>"
 
@@ -155,7 +154,7 @@ async def main_convertor_handler(
 
         elif message.video:
             return await message.reply_video(video=fileid, **meta)
-
+  
 async def create_inline_keyboard_markup(message: Message, method_func, user):
     if message.reply_markup:
         reply_markup = json.loads(str(message.reply_markup))
