@@ -23,11 +23,9 @@ from plugins import web_server
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
-
 async def main_convertor_handler(
     message: Message, edit_caption: bool = False, user=None
 ):
-
     """
     This function is used to convert a message to a different format
 
@@ -41,12 +39,10 @@ async def main_convertor_handler(
     """
     if user:
         header_text = (
-            user["header_text"].replace(
-                r"\n", "\n") if user["is_header_text"] else ""
+            user["header_text"].replace(r"\n", "\n") if user["is_header_text"] else ""
         )
         footer_text = (
-            user["footer_text"].replace(
-                r"\n", "\n") if user["is_footer_text"] else ""
+            user["footer_text"].replace(r"\n", "\n") if user["is_footer_text"] else ""
         )
         username = user["username"] if user["is_username"] else None
         banner_image = user["banner_image"] if user["is_banner_image"] else None
@@ -90,10 +86,13 @@ async def main_convertor_handler(
     # converting reply_markup urls
     reply_markup = await create_inline_keyboard_markup(message, method_func, user=user)
 
-  
-    # Adding header and footer
-    #shortenedText = f"{header_text}\n{shortenedText}\n{footer_text}"
-    shortenedText = f"<b>{header_text}<blockquote>{shortenedText}</blockquote>\n{footer_text}</b>"
+    # Adding header and footer, with main content in a blockquote
+    if header_text:
+        shortenedText = f"<b>{header_text}</b>\n"
+    shortenedText += f"<blockquote>{shortenedText}</blockquote>"
+    if footer_text:
+        shortenedText += f"\n<b>{footer_text}</b>"
+
     # Used to get the file_id of the media. If the media is a photo and BANNER_IMAGE is set, it will
     # replace the file_id with the BANNER_IMAGE.
     if message.media:
@@ -156,7 +155,6 @@ async def main_convertor_handler(
 
         elif message.video:
             return await message.reply_video(video=fileid, **meta)
-
 
 async def create_inline_keyboard_markup(message: Message, method_func, user):
     if message.reply_markup:
