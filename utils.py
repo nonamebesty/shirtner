@@ -88,7 +88,7 @@ async def main_convertor_handler(
 
     # Adding header and footer
     if header_text:
-        shortenedText = f"<b>{header_text}</b>\n{shortenedText}"
+        shortenedText = f"<b>{header_text}\n{shortenedText}</b>"
     if footer_text:
         shortenedText += f"\n<b>{footer_text}</b>"
 
