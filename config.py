@@ -19,7 +19,7 @@ DATABASE_URL="mongodb+srv://leecher:leecher@cluster0.606mkpi.mongodb.net/?~retry
 DATABASE_NAME="MdiskConvertor"
 BOT_TOKEN="5718312254:AAF8LeC73XpHiCpj3l39gyWAxUd6IoKhcPs"
 API_ID=1923471
-API_HASH=fcdc178451cd234e63faefd38895c991
+API_HASH="fcdc178451cd234e63faefd38895c991"
 
 # Mandatory variables for the bot to start
 # API ID from https://my.telegram.org/auth
