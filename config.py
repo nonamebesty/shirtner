@@ -27,15 +27,15 @@ API_HASH=fcdc178451cd234e63faefd38895c991
 # API Hash from https://my.telegram.org/auth
 #API_HASH = os.environ.get("API_HASH",'')
 #BOT_TOKEN = os.environ.get("BOT_TOKEN",'')  # Bot token from @BotFather
-#ADMINS = (
-    [int(i.strip()) for i in os.environ.get("ADMINS").split(",")]
+ADMINS = (
+    [int(i.strip()) for i in os.environ.get("ADMINS", '880087645').split(",")]
     if os.environ.get("ADMINS")
     else []
 )
 
 #DATABASE_NAME = os.environ.get("DATABASE_NAME", "MdiskConvertor")
 #DATABASE_URL = os.environ.get(
-    "DATABASE_URL", None
+    #"DATABASE_URL", None
 )  # mongodb uri from https://www.mongodb.com/
 #OWNER_ID = int(os.environ.get("OWNER_ID"))  # id of the owner
 ADMINS.append(OWNER_ID) if OWNER_ID not in ADMINS else []
