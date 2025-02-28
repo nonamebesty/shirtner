@@ -4,6 +4,7 @@ import datetime
 import logging
 import logging.config
 import sys
+
 from pyrogram import Client
 
 
@@ -28,10 +29,10 @@ class Bot(Client):
             plugins=dict(root="plugins"),
         )
 
-    async def start(self):
+    async def start(self, *args, **kwargs):
 
         temp.START_TIME = datetime.datetime.now()
-        await super().start()
+        await super().start(*args, **kwargs)
 
         if UPDATE_CHANNEL:
             try:
@@ -64,7 +65,7 @@ class Bot(Client):
             logging.info("Web server started")
             logging.info("Pinging server")
 
-    async def stop(self):
+    async def stop(self, *args, **kwargs):
         await broadcast_admins(self, "** Bot Stopped Bye **")
-        await super().stop()
+        await super().stop(*args, **kwargs)
         logging.info("Bot Stopped Bye")
