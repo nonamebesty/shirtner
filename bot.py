@@ -1,5 +1,5 @@
 #import uvloop
-uvloop.install()
+#uvloop.install()
 import datetime
 import logging
 import logging.config
