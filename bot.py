@@ -1,4 +1,4 @@
-import uvloop
+#import uvloop
 uvloop.install()
 import datetime
 import logging
