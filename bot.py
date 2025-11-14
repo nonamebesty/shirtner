@@ -18,20 +18,6 @@ from utils import broadcast_admins, create_server, set_commands
 logging.config.fileConfig("logging.conf")
 logging.getLogger().setLevel(logging.INFO)
 
-import asyncio
-from bot import Bot
-
-async def main():
-    # Your main logic here
-    app = Bot() # Assuming Bot() is your pyrogram.Client instance
-    await app.start()
-    # Your run/idle logic
-    await app.stop()
-
-
-if __name__ == "__main__":
-    # This correctly creates the event loop and runs the main async function
-    asyncio.run(main())
 
 
 class Bot(Client):
